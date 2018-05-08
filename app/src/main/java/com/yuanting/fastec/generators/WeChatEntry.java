@@ -8,6 +8,6 @@ import com.yuanting.latte_core.wechat.template.WXEntryTemplate;
  * Created by 薛立民
  * TEL 13262933389
  */
-@EntryGenerator(packageName = "com.yuanting.festec", entryTemplete = WXEntryTemplate.class)
+@EntryGenerator(packageName = "com.yuanting.fastec", entryTemplete = WXEntryTemplate.class)
 public interface WeChatEntry {
 }

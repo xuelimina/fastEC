@@ -8,6 +8,6 @@ import com.yuanting.latte_core.wechat.template.AppRegisterTemplate;
  * Created by 薛立民
  * TEL 13262933389
  */
-@AppRegisterGenerator(packageName = "com.yuanting.festec", registerTemplete = AppRegisterTemplate.class)
+@AppRegisterGenerator(packageName = "com.yuanting.fastec", registerTemplete = AppRegisterTemplate.class)
 public interface AppRegister {
 }

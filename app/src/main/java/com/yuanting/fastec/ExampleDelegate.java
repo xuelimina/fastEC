@@ -1,8 +1,9 @@
+package com.yuanting.fastec;
+
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
 
-import com.yuanting.fastec.R;
 import com.yuanting.latte_core.delegates.LatteDelegate;
 import com.yuanting.latte_core.net.RestClient;
 import com.yuanting.latte_core.net.callback.IError;

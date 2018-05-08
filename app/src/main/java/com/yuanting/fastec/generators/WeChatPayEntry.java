@@ -8,6 +8,6 @@ import com.yuanting.latte_core.wechat.template.WXPayEntryTemplate;
  * Created by 薛立民
  * TEL 13262933389
  */
-@PayEntryGenerator(packageName = "com.yuanting.festec", payEntryTemplete = WXPayEntryTemplate.class)
+@PayEntryGenerator(packageName = "com.yuanting.fastec", payEntryTemplete = WXPayEntryTemplate.class)
 public interface WeChatPayEntry {
 }

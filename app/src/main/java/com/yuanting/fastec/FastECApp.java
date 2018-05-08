@@ -1,8 +1,9 @@
+package com.yuanting.fastec;
+
 import android.app.Application;
 
 import com.facebook.stetho.Stetho;
 import com.joanzapata.iconify.fonts.FontAwesomeModule;
-import com.yuanting.fastec.R;
 import com.yuanting.latte.ec.database.DatabaseManager;
 import com.yuanting.latte.ec.icon.FontEcModule;
 import com.yuanting.latte_core.app.Latte;
