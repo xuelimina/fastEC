@@ -8,6 +8,7 @@ import android.view.View;
 
 import com.yuanting.latte.ec.R;
 import com.yuanting.latte.ec.R2;
+import com.yuanting.latte.ec.main.sort.SortDelegate;
 import com.yuanting.latte_core.delegates.LatteDelegate;
 import com.yuanting.latte_core.net.RestClient;
 import com.yuanting.latte_core.net.callback.ISuccess;
@@ -28,6 +29,7 @@ public class VerticalListDelegate extends LatteDelegate {
 
     @Override
     public void onBindView(@Nullable Bundle savedInstanceState, View rootView) {
+        initRecyclerView();
     }
 
     private void initRecyclerView() {
@@ -45,6 +47,9 @@ public class VerticalListDelegate extends LatteDelegate {
                     @Override
                     public void onSuccess(String response) {
                         final List<MultipleItemEntity> data = new VerticalListDelegateConverter().setJsonData(response).convert();
+                        final SortDelegate delegate = getParentDelegate();
+                        final SortRecyclerAdapter adapter = new SortRecyclerAdapter(data, delegate);
+                        mRecyclerView.setAdapter(adapter);
                     }
                 }).build().get();
     }
