@@ -2,9 +2,12 @@ package com.yuanting.latte_core.app;
 
 import android.app.Activity;
 import android.os.Handler;
+import android.support.annotation.NonNull;
 
 import com.joanzapata.iconify.IconFontDescriptor;
 import com.joanzapata.iconify.Iconify;
+import com.yuanting.latte_core.delegates.web.event.Event;
+import com.yuanting.latte_core.delegates.web.event.EventManager;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -25,6 +28,7 @@ public class Configurator {
     //OKhttp中的拦截器集合
     private static final ArrayList<Interceptor> INTERCEPTORS = new ArrayList<>();
     private static final Handler HANDLER = new Handler();
+
     private Configurator() {
         LATTE_CONFIGS.put(ConfigKeys.CONFIG_READY, false);
         LATTE_CONFIGS.put(ConfigKeys.HANDLER, HANDLER);
@@ -61,6 +65,17 @@ public class Configurator {
 
     public final Configurator withWeChatAppID(String appID) {
         LATTE_CONFIGS.put(ConfigKeys.WE_CHAT_APP_ID, appID);
+        return this;
+    }
+
+    public final Configurator withJavascriptInterface(@NonNull String name) {
+        LATTE_CONFIGS.put(ConfigKeys.JAVASCRIPT_INTERFACE, name);
+        return this;
+    }
+
+    public final Configurator withWebEvent(@NonNull String name, @NonNull Event event) {
+        final EventManager manager = EventManager.getInstance();
+        manager.addEvent(name, event);
         return this;
     }
 

@@ -23,6 +23,7 @@ public class FastECApp extends Application {
                 .withLoaderDelayed(1000)
                 .withWeChatAppID("微信AppKey").withWeChatAppSecret("微信AppSecret")
                 .withInterceptor(new DebugInterceptor("test", R.raw.test))
+                .withJavascriptInterface("latte")
                 .withIcons(new FontEcModule()).configure();
         DatabaseManager.getInstance().init(this);
         initStetho();
