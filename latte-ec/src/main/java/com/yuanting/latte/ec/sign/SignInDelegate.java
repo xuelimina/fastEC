@@ -67,7 +67,7 @@ public class SignInDelegate extends LatteDelegate {
     }
     @OnClick(R2.id.tv_link_sign_up)
     void linSignUp() {
-        start(new SignUpDelegate());
+        getSupportDelegate().start(new SignUpDelegate());
     }
 
     @OnClick(R2.id.tv_sign_in_wechat)

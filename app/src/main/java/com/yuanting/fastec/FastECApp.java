@@ -20,7 +20,7 @@ public class FastECApp extends Application {
         super.onCreate();
         Latte.init(getApplicationContext()).withApiHost("http://oxjde2kpq.bkt.clouddn.com/")
                 .withIcons(new FontAwesomeModule())
-                .withLoaderDelayed(1000)
+                .withLoaderDelayed(500)
                 .withWeChatAppID("微信AppKey").withWeChatAppSecret("微信AppSecret")
                 .withInterceptor(new DebugInterceptor("test", R.raw.test))
                 .withJavascriptInterface("latte")

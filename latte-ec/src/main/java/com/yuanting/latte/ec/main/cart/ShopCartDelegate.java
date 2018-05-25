@@ -11,6 +11,7 @@ import android.support.v7.widget.ViewStubCompat;
 import android.view.View;
 import android.widget.Toast;
 
+import com.alibaba.fastjson.JSON;
 import com.joanzapata.iconify.widget.IconTextView;
 import com.yuanting.latte.ec.R;
 import com.yuanting.latte.ec.R2;
@@ -18,9 +19,11 @@ import com.yuanting.latte_core.delegates.bottom.BottomItemDelegate;
 import com.yuanting.latte_core.net.RestClient;
 import com.yuanting.latte_core.net.callback.ISuccess;
 import com.yuanting.latte_core.ui.recycler.MultipleItemEntity;
+import com.yuanting.latte_core.util.log.LatteLogger;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.WeakHashMap;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -70,7 +73,7 @@ public class ShopCartDelegate extends BottomItemDelegate implements ISuccess, IC
     void onClickClear() {
         mAdapter.getData().clear();
         mAdapter.setTotalPrice(0.00);
-        mTvTotalPrice.setText("￥:0.00");
+        mTvTotalPrice.setText("0.00");
         mAdapter.notifyDataSetChanged();
         checkItemCount();
 
@@ -131,7 +134,36 @@ public class ShopCartDelegate extends BottomItemDelegate implements ISuccess, IC
         mTvTotalPrice.setText(String.valueOf(mTotalPrice));
         checkItemCount();
     }
+//    @OnClick(R2.id.tv_shop_cart_pay)
+    void onClickPay() {
+        createOrder();
+    }
 
+    //创建订单，注意，和支付是没有关系的
+    private void createOrder() {
+        final String orderUrl = "你的生成订单的API";
+        final WeakHashMap<String, Object> orderParams = new WeakHashMap<>();
+        //加入你的参数
+        RestClient.builder()
+                .url(orderUrl)
+                .loader(getContext())
+                .params(orderParams)
+                .success(new ISuccess() {
+                    @Override
+                    public void onSuccess(String response) {
+                        //进行具体的支付
+                        LatteLogger.d("ORDER", response);
+                        final int orderId = JSON.parseObject(response).getInteger("result");
+//                        FastPay.create(ShopCartDelegate.this)
+//                                .setPayResultListener(ShopCartDelegate.this)
+//                                .setOrderId(orderId)
+//                                .beginPayDialog();
+                    }
+                })
+                .build()
+                .post();
+
+    }
     @SuppressWarnings("RestrictedApi")
     private void checkItemCount() {
         final int count = mAdapter.getItemCount();
