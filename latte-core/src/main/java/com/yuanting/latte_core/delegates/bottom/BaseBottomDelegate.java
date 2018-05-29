@@ -20,7 +20,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 import butterknife.BindView;
-import me.yokeyword.fragmentation.SupportFragment;
+import me.yokeyword.fragmentation.ISupportFragment;
 
 /**
  * Created on 2018/5/3 13:53
@@ -87,7 +87,7 @@ public abstract class BaseBottomDelegate extends LatteDelegate implements View.O
                 itemTitle.setTextColor(mClickedColor);
             }
         }
-        final SupportFragment[] delegateArray = ITEM_DELEGATES.toArray(new SupportFragment[size]);
+        final ISupportFragment[] delegateArray = ITEM_DELEGATES.toArray(new ISupportFragment[size]);
         getSupportDelegate().loadMultipleRootFragment(R.id.bottom_bar_delegate_container, mIndexDelegate, delegateArray);
     }
 
